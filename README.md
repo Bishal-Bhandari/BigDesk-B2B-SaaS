@@ -1,6 +1,6 @@
-# ProjectName
+# Nira B2B SaaS Platform
 
-**ProjectName** is a modern B2B SaaS platform for **issue tracking, project management, and team collaboration**.  
+**Nira B2B SaaS Platform** is a modern B2B SaaS platform for **issue tracking, project management, and team collaboration**.  
 It helps teams plan work, track progress, and ship faster with clarity and accountability.
 
 ---
