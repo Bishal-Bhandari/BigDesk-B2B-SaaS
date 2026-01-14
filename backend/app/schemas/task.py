@@ -1,0 +1,30 @@
+from datetime import datetime
+from typing import Optional
+from pydantic import BaseModel
+from backend.app.models.task import TaskStatus
+
+class taskCreate(BaseModel):
+    title: str
+    description: Optional[str] = None
+    status: TaskStatus = TaskStatus.PENDING
+
+class taskUpdate(BaseModel):
+    title: Optional[str] = None
+    description: Optional[str] = None
+    status: Optional[TaskStatus] = None
+
+class TaskStatusupdate(BaseModel):
+    status: TaskStatus
+
+class TaskResponse(BaseModel):
+    id: int
+    title: str
+    description: Optional[str] = None
+    status: TaskStatus
+    org_id: int
+    created_by: str
+    created_at: datetime
+    updated_at: datetime
+
+    class Config:
+        from_attributes = True
