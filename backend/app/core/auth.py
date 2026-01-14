@@ -56,7 +56,7 @@ async def get_current_user(request: Request) -> AuthUser:
     org_id = claims.get("org_id")
     org_permissions = claims.get("org_permissions") or claims.get("permissions") or []
 
-    if not user_id:
+    if not user_id or not org_id:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Unauthorized"
