@@ -3,17 +3,17 @@ from typing import Optional
 from pydantic import BaseModel
 from backend.app.models.task import TaskStatus
 
-class taskCreate(BaseModel):
+class TaskCreate(BaseModel):
     title: str
     description: Optional[str] = None
     status: TaskStatus = TaskStatus.PENDING
 
-class taskUpdate(BaseModel):
+class TaskUpdate(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
     status: Optional[TaskStatus] = None
 
-class TaskStatusupdate(BaseModel):
+class TaskStatusUpdate(BaseModel):
     status: TaskStatus
 
 class TaskResponse(BaseModel):
