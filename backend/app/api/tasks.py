@@ -78,3 +78,26 @@ def update_task(
     db.refresh(task)
 
     return task
+
+
+@route.delete("/{task_id", status_code=status.HTTP_204_NO_CONTENT)
+def update_task(
+        task_id: str,
+        user: AuthUser = Depends(require_delete),
+        db: Session = Depends(get_db)
+):
+    task = db.query(Task).filter(
+        Task.id == task_id,
+        Task.org_id == user.org_id,
+    ).first()
+
+    if not task:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Task not found."
+        )
+
+    db.delete(task)
+    db.commit()
+
+    return None
