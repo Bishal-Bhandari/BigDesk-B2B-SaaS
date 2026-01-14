@@ -31,3 +31,20 @@ def list_tasks(task_data: TaskCreate,
 
     return task
 
+@route.get("/{task_id", response_model=TaskResponse)
+def get_task(
+        task_id: str,
+        user: AuthUser = Depends(require_view),
+        db: Session = Depends(get_db)
+):
+    task = db.query(Task).filter(
+        Task.id == task_id,
+        Task.org_id == user.org_id,
+    ).first()
+
+    if not task:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Task not found."
+        )
+    return task
