@@ -61,3 +61,5 @@ async def get_current_user(request: Request) -> AuthUser:
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Unauthorized"
         )
+
+    return AuthUser(user_id=user_id, org_id=org_id, org_permissions=org_permissions)
