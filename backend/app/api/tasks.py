@@ -48,3 +48,33 @@ def get_task(
             detail="Task not found."
         )
     return task
+
+@route.put("/{task_id", response_model=TaskResponse)
+def update_task(
+        task_id: str,
+        task_data: TaskUpdate,
+        user: AuthUser = Depends(require_edit),
+        db: Session = Depends(get_db)
+):
+    task = db.query(Task).filter(
+        Task.id == task_id,
+        Task.org_id == user.org_id,
+    ).first()
+
+    if not task:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Task not found."
+        )
+
+    if task_data.title is not None:
+        task.title = task_data.title
+    if task_data.description is not None:
+        task.description = task_data.description
+    if task_data.status is not None:
+        task.status = task_data.status
+
+    db.commit()
+    db.refresh(task)
+
+    return task
