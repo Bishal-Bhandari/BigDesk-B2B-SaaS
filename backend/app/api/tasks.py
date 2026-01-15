@@ -6,15 +6,15 @@ from backend.app.core.auth import get_current_user, require_view, require_create
 from backend.app.models.task import Task
 from backend.app.schemas.task import TaskCreate, TaskUpdate, TaskStatusUpdate, TaskResponse
 
-route = APIRouter(prefix="/api/tasks", tags=["tasks"])
+router = APIRouter(prefix="/api/tasks", tags=["tasks"])
 
-@route.get("", response_model=List[TaskResponse])
+@router.get("", response_model=List[TaskResponse])
 def list_tasks(user: AuthUser = Depends(require_view),
                 db: Session =  Depends(get_db)):
     tasks = db.query(Task).filter(Task.org_id == user.org_id).all()
     return tasks
 
-@route.post("", response_model=TaskResponse)
+@router.post("", response_model=TaskResponse)
 def create_tasks(task_data: TaskCreate,
                user: AuthUser = Depends(require_create),
                db: Session =  Depends(get_db)):
@@ -31,7 +31,7 @@ def create_tasks(task_data: TaskCreate,
 
     return task
 
-@route.get("/{task_id", response_model=TaskResponse)
+@router.get("/{task_id", response_model=TaskResponse)
 def get_task(
         task_id: str,
         user: AuthUser = Depends(require_view),
@@ -49,11 +49,11 @@ def get_task(
         )
     return task
 
-@route.put("/{task_id", response_model=TaskResponse)
+@router.put("/{task_id", response_model=TaskResponse)
 def update_task(
         task_id: str,
         task_data: TaskUpdate,
-        user: AuthUser = Depends(require_edit),
+        user: AuthUser = Depends(require_view),
         db: Session = Depends(get_db)
 ):
     task = db.query(Task).filter(
@@ -80,7 +80,7 @@ def update_task(
     return task
 
 
-@route.delete("/{task_id", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{task_id", status_code=status.HTTP_204_NO_CONTENT)
 def delete_task(
         task_id: str,
         user: AuthUser = Depends(require_delete),
