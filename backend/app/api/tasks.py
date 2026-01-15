@@ -81,7 +81,7 @@ def update_task(
 
 
 @route.delete("/{task_id", status_code=status.HTTP_204_NO_CONTENT)
-def update_task(
+def delete_task(
         task_id: str,
         user: AuthUser = Depends(require_delete),
         db: Session = Depends(get_db)
