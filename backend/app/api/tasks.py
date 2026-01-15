@@ -15,7 +15,7 @@ def list_tasks(user: AuthUser = Depends(require_view),
     return tasks
 
 @route.post("", response_model=TaskResponse)
-def list_tasks(task_data: TaskCreate,
+def create_tasks(task_data: TaskCreate,
                user: AuthUser = Depends(require_create),
                db: Session =  Depends(get_db)):
     task = Task(
