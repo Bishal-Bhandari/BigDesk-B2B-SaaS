@@ -6,8 +6,30 @@ import SignUpPage from "./pages/SignUp.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
 import PricingPage from "./pages/PricingPage.jsx";
 
-function App() {
 
+function ProtectedRoute({children}){
+    return <>
+        <SignedIn>{children}</SignedIn>
+        <SignedOut>
+            <RedirectTOSignIn />
+        </SignedOut>
+    </>
+    }
+
+function App() {
+return <Routes>
+    <Route path="/">
+        <Route index element={<HomePage />} />
+        <Route path="sign-in/*" element={<SignInPage />} />
+        <Route path="sign-up/*" element={<SignUpPage />} />
+        <Route path="pricing" element={<PricingPage />} />
+        <Route path="dashboard" element={
+            <ProtectedRoute>
+                <DashboardPage />
+            </ProtectedRoute>
+        } />
+    </Route>
+</Routes>
 }
 
 export default App
