@@ -1,5 +1,5 @@
 import {Routes, Route} from 'react-router-dom';
-import {SignIn, SignOut, RedirectTOSignIn} from "@clerk/clerk-react";
+import {SignedIn, SignedOut, RedirectToSignIn} from "@clerk/clerk-react";
 import HomePage from "./pages/HomePage.jsx";
 import SignInPage from "./pages/SignInPage.jsx";
 import SignUpPage from "./pages/SignUp.jsx";
@@ -11,7 +11,7 @@ function ProtectedRoute({children}){
     return <>
         <SignedIn>{children}</SignedIn>
         <SignedOut>
-            <RedirectTOSignIn />
+            <RedirectToSignIn />
         </SignedOut>
     </>
     }
