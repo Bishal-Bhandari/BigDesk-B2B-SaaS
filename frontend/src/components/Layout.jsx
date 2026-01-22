@@ -1,7 +1,7 @@
 import {Outlet, Link} from 'react-router-dom';
 import {SignedIn, SignedOut, UserButton, OrganizationSwitcher, useOrganization} from "@clerk/clerk-react";
 
-function layout(){
+function Layout(){
     const {organization} = userOrganization();
 
     return <div className={"layout"}>
@@ -52,4 +52,4 @@ function layout(){
         </div>
     }
 
-export default layout
+export default Layout
