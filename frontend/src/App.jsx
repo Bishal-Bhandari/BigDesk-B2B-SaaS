@@ -1,6 +1,6 @@
 import {Routes, Route} from 'react-router-dom';
 import {SignedIn, SignedOut, RedirectToSignIn} from "@clerk/clerk-react";
-import layout from "./components/layout.jsx";
+import Layout from "./components/layout.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import SignInPage from "./pages/SignInPage.jsx";
 import SignUpPage from "./pages/SignUp.jsx";
