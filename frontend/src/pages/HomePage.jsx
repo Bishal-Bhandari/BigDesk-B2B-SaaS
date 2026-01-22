@@ -27,7 +27,9 @@ function HomePage(){
                 <Link to={"/dashboard"} className={"btn btn-primary btn-lg"}>
                     Go to Dashboard
                 </Link>
-                )}
+                ): <div className= {"home-create-org"}>
+                        <CreateOrganization afterCreateOrganizationUrl={"/dashboard"} />
+                </div>}
         </SignedIn>
     </div>
 
