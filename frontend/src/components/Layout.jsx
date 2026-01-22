@@ -2,7 +2,7 @@ import {Outlet, Link} from 'react-router-dom';
 import {SignedIn, SignedOut, UserButton, OrganizationSwitcher, useOrganization} from "@clerk/clerk-react";
 
 function Layout(){
-    const {organization} = userOrganization();
+    const {organization} = useOrganization();
 
     return <div className={"layout"}>
             <div className={"nav"}>
