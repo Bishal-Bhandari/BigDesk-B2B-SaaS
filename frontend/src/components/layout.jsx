@@ -25,7 +25,26 @@ function layout(){
                             Sign Up
                         </Link>
                     </SignedOut>
+                    <SignedIn>
+                        <OrganizationSwitcher
+                            hidePersonal
+                            afterCreateOrganizationURL={"dashboard"}
+                            afterSelectOrganizationMode={"modal"}
+                            apperance={{
+                                elements:{
+                                    userPreviewMainIdentifierText__personalWorkspace: {color: "white"},
+                                    organizationPreviewMainIdentifier__organizationSwitcherTrigger: {color: "white"}
+                                    }
+                                }}
+                            />
+                            {organization &&
+                                <Link to={"/dashboard"} className={"nav=link"}>
+                                    Dashboard
+                                </Link>
+                    </SignedIn>
                 </div>
             </div>
         </div>
     }
+
+export default layout
