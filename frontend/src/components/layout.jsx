@@ -4,7 +4,17 @@ import {SignedIn, SignedOut, UserButton, OrganizationSwitcher, userOrganization}
 function layout(){
     const {organization} = userOrganization();
 
-    return <div>
+    return <div className={"layout"}>
+            <div className={"nav"}>
+                <div className={"nav-container"}>
+                    <Link to={"/"} className={"nav-logo"}>
+                        TaskBoard
+                    </Link>
 
+                    <div className={"nav-links"}>
+                        <Link></Link>
+                    </div>
+                </div>
+            </div>
         </div>
     }
