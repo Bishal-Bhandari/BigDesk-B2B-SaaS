@@ -41,9 +41,14 @@ function layout(){
                                 <Link to={"/dashboard"} className={"nav=link"}>
                                     Dashboard
                                 </Link>
+                                <UserButton />
                     </SignedIn>
                 </div>
             </div>
+
+            <main>
+                <Outlet/>
+            </main>
         </div>
     }
 
