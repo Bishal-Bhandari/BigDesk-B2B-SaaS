@@ -40,7 +40,7 @@ function layout(){
                             {organization &&
                                 <Link to={"/dashboard"} className={"nav=link"}>
                                     Dashboard
-                                </Link>
+                                </Link>}
                                 <UserButton />
                     </SignedIn>
                 </div>
