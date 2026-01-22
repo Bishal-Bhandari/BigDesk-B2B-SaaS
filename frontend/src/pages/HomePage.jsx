@@ -5,7 +5,7 @@ function HomePage(){
 
     return <div className={"home-container"}>
         <h1 className={"home-title"}>
-            Welcome to Nira Task Management
+            Welcome to Nira Task Management <br/>
             <span className={"home-title-accent"}> Made Simple. </span>
         </h1>
         <p className={"home-subtitle"}>
@@ -16,10 +16,10 @@ function HomePage(){
             <div className={"home-buttons"}>
                 <Link to={"/sign-up"} className={"btn btn-primary btn-lg"}>
                     Start for free.
-                </Links>
+                </Link>
                 <Link to={"/sign-in"} className={"btn btn-outline btn-lg"}>
                     Sign In
-                </Links>
+                </Link>
             </div>
         </SignedOut>
         <SignedIn>
