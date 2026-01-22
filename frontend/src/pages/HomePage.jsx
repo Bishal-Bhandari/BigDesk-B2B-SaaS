@@ -2,7 +2,7 @@ import {Link} from "react-router-dom"
 import {SignedIn, SignedOut, useOrganization, CreateOrganization} from "@clerk/clerk-react";
 
 function HomePage(){
-
+    const {organization} = useOrganization()
     return <div className={"home-container"}>
         <h1 className={"home-title"}>
             Welcome to Nira Task Management <br/>
