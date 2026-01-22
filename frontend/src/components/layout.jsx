@@ -12,8 +12,19 @@ function layout(){
                     </Link>
 
                     <div className={"nav-links"}>
-                        <Link></Link>
+                        <Link to={"/pricing"} className={"nav-link"}>
+                            Pricing
+                        </Link>
                     </div>
+
+                    <SignedOut>
+                        <Link to={"/sign-in"} className={"nav-link"}>
+                            Sign In
+                        </Link>
+                        <Link to={"/sign-up"} className={"nav-link"}>
+                            Sign Up
+                        </Link>
+                    </SignedOut>
                 </div>
             </div>
         </div>
