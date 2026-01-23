@@ -35,3 +35,17 @@ export async function createTasks(getToken, task){
         body: JSON.stringify(task)
         })
     }
+
+export async function updateTasks(getToken, taskId, task){
+    return fetchWithAuth("/api/tasks/${taskId}", getToken, {
+        method: "PUT",
+        body: JSON.stringify(task)
+        })
+    }
+
+export async function deleteTasks(getToken, taskId){
+    return fetchWithAuth("/api/tasks/${taskId}", getToken, {
+        method: "PUT",
+        body: JSON.stringify(task)
+        })
+    }
