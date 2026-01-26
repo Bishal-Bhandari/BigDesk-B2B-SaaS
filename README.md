@@ -1,6 +1,6 @@
-# Nira B2B SaaS Platform
+# Big Desk B2B SaaS Platform
 
-**Nira B2B SaaS Platform** is a modern B2B SaaS platform for **issue tracking, project management, and team collaboration**.  
+**Big Desk B2B SaaS Platform** is a modern B2B SaaS platform for **issue tracking, project management, and team collaboration**.  
 It helps teams plan work, track progress, and ship faster with clarity and accountability.
 
 ---
