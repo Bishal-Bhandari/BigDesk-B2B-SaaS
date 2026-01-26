@@ -8,7 +8,21 @@ function TaskCard({task, onEdit, onDelete}){
     >
         <div className={"tsk-card-header"}>
             <h4 className={"task-card-title"}>{task.title}</h4>
-            {canDelete}
+            {canDelete && (
+                <button
+                    className={"task-card-btn task-card-btn-delete"}
+                    onClick={(e)=>{
+                        e.stopPropagation()
+                        onDelete(task.id)
+                        }}
+                    title={"Delete Task"}
+                    >X</button>
+                )}
+                {task.description && (
+                    <p className={"task-card-description"}>{task.description}</p>
+                    )}
             </div>
         </div>
     }
+
+export default TaskCard
