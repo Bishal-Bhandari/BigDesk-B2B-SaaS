@@ -5,7 +5,7 @@ function HomePage(){
     const {organization} = useOrganization()
     return <div className={"home-container"}>
         <h1 className={"home-title"}>
-            Welcome to Nira Task Management <br/>
+            Welcome to Big Desk Task Management <br/>
             <span className={"home-title-accent"}> Made Simple. </span>
         </h1>
         <p className={"home-subtitle"}>
