@@ -45,9 +45,28 @@ function DashboardPage(){
             </div>
         }
 
-    return <div className={""}>
+    return <div className={"dashboard-container"}>
+        <div className={"dashboard-header"}>
+            <div>
+                <h1 className={"dashboard-title"}>{organization.name}</h1>
+                <p className={"org-members"}>{memberCount} member{memberCount !== 1 ? "s" : ""}</p>
+                </div>
+            </div>
+        {loading ? (
+            <p className={"text-muted"}>Loading tasks...</p>
+            ) : error ? (
+                <div className={"card-error"}>
+                    <p className={"text-error text-error-title"}>Error in loading tasks</p>
+                    <p className={"text-error text-error-message"}>{error}</p>
+                    </div>
+                ) : (
+                    <KanbanBoard
+                    tasks={tasks}
+                    setTasks={setTasks}
+                    getToken={getToken}
+                    />
+                )}
         </div>
-
     }
 
 export default DashboardPage
