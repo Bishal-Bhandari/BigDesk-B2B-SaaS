@@ -20,8 +20,13 @@ function DashboardPage(){
             setLoading(true)
             setError(null)
             const data = await getTasks(getToken)
-            }
-        })
+            setTasks(data)
+            } catch (err){
+                setError(err.message)
+                } finally {
+                    setLoading(false)
+                    }
+        }, [getToken])
 
     return <></>
 
