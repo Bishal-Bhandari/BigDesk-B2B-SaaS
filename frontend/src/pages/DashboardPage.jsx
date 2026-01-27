@@ -27,8 +27,26 @@ function DashboardPage(){
                     setLoading(false)
                     }
         }, [getToken])
+    useEffect(()=>{
+        if (orgId){
+            loadTasks()
+            } else{
+                setLoading(false)
+                }
+        }, [orgId, loadTasks])
 
-    return <></>
+    if (!organization){
+        return <div className={"dashboard-container"}>
+            <div className={"no-org-container"}>
+                <h1 className={"no-org-title"}>Welcome To Your Board.</h1>
+                <p>Create or Join an organization to see, edit, add, delete tasks.</p>
+                <CreateOrganization afterCreateOrganizationUrl={"/dashboard"}/>
+                </div>
+            </div>
+        }
+
+    return <div className={""}>
+        </div>
 
     }
 
