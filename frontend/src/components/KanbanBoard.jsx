@@ -59,6 +59,28 @@ function kanbanBoard({tasks, setTasks, getToken}){
                 }
         }
 
-    function
+    function handleCancel(){
+        setShowForm(false)
+        setEditingTask(null)
+        }
+
+    function handleAddTask(){
+        setEditingTask(null)
+        setShowForm(true)
+        }
+
+    return <div className={"kanban-wrapper"}>
+        <div className={"kanban-header"}>
+            <h2 className={"kanban-title"}>Tasks</h2>
+            {canManage && (
+                <button className={"btn btn-primary"} onClick={handleAddTask}>
+                    + Add Task
+                    </button>
+                )}
+            </div>
+            <div className={""}>
+
+                </div>
+        </div>
 
     }
