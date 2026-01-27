@@ -78,8 +78,16 @@ function kanbanBoard({tasks, setTasks, getToken}){
                     </button>
                 )}
             </div>
-            <div className={""}>
-
+            <div className={"kanban-board"}>
+                {STATUSES.map(status=>(
+                    <TaskColumn
+                        key={status}
+                        status ={status}
+                        tasks={getTasksByStatus(status)}
+                        onEdit={canManage ? handelEdit : null}
+                        onDelete={canManage ? handleDelete : null}
+                    />
+                    ))}
                 </div>
         </div>
 
