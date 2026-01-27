@@ -89,6 +89,9 @@ function kanbanBoard({tasks, setTasks, getToken}){
                     />
                     ))}
                 </div>
-        </div>
 
+            {showForm && null}
+        </div>
     }
+
+export default KanbanBoard
