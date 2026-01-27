@@ -25,8 +25,18 @@ function kanbanBoard({tasks, setTasks, getToken}){
     async function handleDelete(taskId){
         if (!confirm("Are you sure you want to delete this task?")) return
 
-        const
-        }
+        const taskToDelete = tasks.find(t => t.id === taskId)
+        setTasks(prev => prev.filter(t => t.id !== taskId))
 
+        try{
+            await deleteTask(getToken, taskId)
+            } catch (err) {
+                setTasks(prev => [...prev, taskToDelete])
+                console.error("Failed to delete task:", err)
+                }
+        }
+    async function handleSubmit(taskData){
+        if
+        }
 
     }
