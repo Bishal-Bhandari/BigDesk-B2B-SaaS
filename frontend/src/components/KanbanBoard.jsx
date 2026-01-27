@@ -36,7 +36,29 @@ function kanbanBoard({tasks, setTasks, getToken}){
                 }
         }
     async function handleSubmit(taskData){
-        if
+        if(editingTask){
+            const updateTask = {...editingTask, ...taskdata}
+            setTasks(prev => prev.map(t=> t.id === editingTask.id ? updatedTask : t))
+            setShowForm(false)
+            setEditingTask(null)
+
+            try{
+                await updateTask(getToken, editingTask.id, taskData)
+                } catch (err) {
+                    setTasks(prev => prev.map(t => t.id === editingTask.id ? editingTask : t))
+                    console.error("Failed to update task:", err)
+                    }
+            } else {
+                try {
+                    const newTask = await createTask(getToken, taskData)
+                    setTasks(prev => [...prev, newTask])
+                    setShowForm(false)
+                    } catch (err){
+                        console.error(err)
+                        }
+                }
         }
+
+    function
 
     }
