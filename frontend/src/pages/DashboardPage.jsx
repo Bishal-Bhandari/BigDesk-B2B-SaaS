@@ -12,7 +12,16 @@ function DashboardPage(){
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
-    const
+    const memberCount = membership?.count ?? 0
+    const orgId = organization?.orgId
+
+    const loadTasks = useCallback(async () => {
+        try{
+            setLoading(true)
+            setError(null)
+            const data = await getTasks(getToken)
+            }
+        })
 
     return <></>
 
