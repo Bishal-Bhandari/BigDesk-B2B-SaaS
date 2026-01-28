@@ -5,14 +5,14 @@ import KanbanBoard from "../components/KanbanBoard.jsx"
 
 function DashboardPage(){
     const {getToken} = useAuth()
-    const {organization, membership} = useOrganization(
-        {membership: {infinite: true}}
+    const {organization, memberships} = useOrganization(
+        {memberships: {infinite: true}}
         )
     const [tasks, setTasks] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
-    const memberCount = membership?.count ?? 0
+    const memberCount = memberships?.count ?? 0
     const orgId = organization?.orgId
 
     const loadTasks = useCallback(async () => {
