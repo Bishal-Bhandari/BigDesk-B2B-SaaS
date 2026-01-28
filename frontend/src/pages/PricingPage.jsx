@@ -21,6 +21,7 @@ function PricingPage(){
             <h1 className={"pricing-title"}>Choose the plan that's right for you</h1>
             <p className={"pricing-subtitle"}>
                 Simple and transparent pricing for individuals and teams of all sizes.
+                </p>
             </div>
         {!isAdmin ?(
             <p className={"text-mute pricing-admin-note"}>
