@@ -25,3 +25,32 @@ def has_active_pro_plan(items: list) -> bool:
         for item in items
     )
 
+@router.post("/clerk")
+async def clerk_webhook(request: Request):
+    payload = await request.body()
+    headers = dict(request.headers)
+
+    if settings.CLERK_WEBHOOK_SECRET:
+        try:
+            wh = Webhook(settings.CLERK_WEBHOOK_SECRET)
+            event = wh.verify(payload, headers)
+        except WebhookVerificationError:
+            raise HTTPException(status.HTTP_400_BAD_REQUEST, "Invalid signature")
+    else:
+        event = json.loads(payload)
+
+    event_type = event.get("type")
+    data = event.get("data", {})
+
+    if event_type in ["subscription.created", "subscription.updated"]:
+        org_id = data.get("payer", {}).get("organization_id")
+        if org_id:
+            limit = (UNLIMITED_LIMIT if has_active_pro_plan(data.get("items", []))
+                     else FREE_TIER_LIMIT)
+            set_org_member_limit(org_id, limit)
+    elif event_type in ["subscription.deleted", "subscription.cancelled"]:
+        org_id = data.get("payer", {}).get("organization_id")
+        if org_id:
+            set_org_member_limit(org_id, FREE_TIER_LIMIT)
+
+    return {"received": True}
