@@ -24,3 +24,4 @@ def has_active_pro_plan(items: list) -> bool:
         and item.get("status") == "active"
         for item in items
     )
+
