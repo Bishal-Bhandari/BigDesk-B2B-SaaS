@@ -69,7 +69,6 @@ async def get_current_user(request: Request) -> AuthUser:
 
     return AuthUser(user_id=user_id, org_id=org_id, org_permissions=org_permissions)
 
-
 def require_view(user: AuthUser = Depends(get_current_user)) -> AuthUser:
     if not user.can_view:
         raise HTTPException(
@@ -78,7 +77,6 @@ def require_view(user: AuthUser = Depends(get_current_user)) -> AuthUser:
         )
 
     return user
-
 
 def require_create(user: AuthUser = Depends(get_current_user)) -> AuthUser:
     if not user.can_create:
@@ -89,7 +87,6 @@ def require_create(user: AuthUser = Depends(get_current_user)) -> AuthUser:
 
     return user
 
-
 def require_delete(user: AuthUser = Depends(get_current_user)) -> AuthUser:
     if not user.can_delete:
         raise HTTPException(
@@ -98,7 +95,6 @@ def require_delete(user: AuthUser = Depends(get_current_user)) -> AuthUser:
         )
 
     return user
-
 
 def require_edit(user: AuthUser = Depends(get_current_user)) -> AuthUser:
     if not user.can_edit:
